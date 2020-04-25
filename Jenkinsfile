@@ -1,13 +1,8 @@
-pipeline {
-    agent any
-    stages {
-        stage('Test') {
-            steps {
-                nodejs(nodeJSInstallationName: 'nodejs') {
-                    sh 'npm install --only-dev'
-                    sh 'npm test'
-                }
-            }
+node {
+    stage('Test') {
+        nodejs(nodeJSInstallationName: 'nodejs') {
+            sh 'npm install --only-dev'
+            sh 'npm test'
         }
     }
 }
