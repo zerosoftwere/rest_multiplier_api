@@ -1,4 +1,4 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, HttpCode } from '@nestjs/common';
 import { MultiplyService } from './multiply.service';
 import { MultiplyDto } from './dto';
 
@@ -7,6 +7,7 @@ export class MultiplyController {
     constructor(private multiplyService: MultiplyService) {}
 
     @Post()
+    @HttpCode(200)
     multiply(@Body() multiplyDto: MultiplyDto): any {
         return {result: this.multiplyService.multiply(multiplyDto.numbers)}
     }

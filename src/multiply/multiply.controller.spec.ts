@@ -5,6 +5,7 @@ import { MultiplyService } from './multiply.service';
 
 describe('Multiply Controller', () => {
   let controller: MultiplyController;
+  let service: MultiplyService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -13,6 +14,7 @@ describe('Multiply Controller', () => {
     }).compile();
 
     controller = module.get<MultiplyController>(MultiplyController);
+    service = module.get<MultiplyService>(MultiplyService);
   });
 
   it('should be defined', () => {
@@ -20,7 +22,9 @@ describe('Multiply Controller', () => {
   });
 
   it('should return the cummulative product', () => {
-    const dto: MultiplyDto = {numbers: [1,2,3,4,5]};
-    expect(controller.multiply(dto).result).toBe(120);
+    jest.spyOn(service, 'multiply').mockReturnValue(30);
+
+    const dto: MultiplyDto = {numbers: [3, 10]};
+    expect(controller.multiply(dto).result).toBe(30);
   });
 });

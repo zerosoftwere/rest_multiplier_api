@@ -7,6 +7,6 @@ export class AppController {
 
   @Get()
   status(): any {
-    return {status: 'up'};
+    return this.appService.checkStatus();
   }
 }
