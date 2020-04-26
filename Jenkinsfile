@@ -1,4 +1,8 @@
-node {
+pipeline {
+    agent { 
+        docker { image 'nodejs:14' } 
+    }
+
     environment {
         Home = '.'
     }
@@ -7,14 +11,13 @@ node {
         checkout scm
     }
 
-    stage('Test') {
-        def testContainer = docker.image('node:14')
-        testContainer.pull()
-        testContainer.inside {
-            sh 'npm install --only-dev'
-            sh 'npm test'
-            sh 'npm test:e2e'
-            sh 'npm test:cov'
+    stages {
+        stage ('Test') {
+            step {
+                sh 'npm install --dev-only'
+                sh 'npm test'
+                sh 'npm test:e2e'
+            }
         }
     }
 }
