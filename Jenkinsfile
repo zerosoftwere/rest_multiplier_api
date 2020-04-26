@@ -7,10 +7,6 @@ pipeline {
         }
     }
 
-    stage('Prepare') {
-        checkout scm
-    }
-
     stages {
         stage ('Test') {
             step {
