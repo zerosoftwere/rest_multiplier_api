@@ -4,9 +4,6 @@ pipeline {
     }
 
     stages {
-        stage('Prepare') {
-            checkout scm
-        }
         stage('Test') {
             steps {
                 sh 'npm install --only-dev'
