@@ -1,10 +1,10 @@
 pipeline {
     agent { 
         docker { image 'nodejs:14' } 
-    }
 
-    environment {
-        Home = '.'
+        environment {
+            Home = '.'
+        }
     }
 
     stage('Prepare') {
