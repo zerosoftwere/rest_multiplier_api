@@ -11,8 +11,8 @@ pipeline {
         stage ('Test') {
             steps {
                 sh 'npm install --dev-only'
-                sh 'npm test'
-                sh 'npm test:e2e'
+                sh 'npm run test'
+                sh 'npm run test:e2e'
             }
         }
     }
